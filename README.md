@@ -16,7 +16,6 @@ A little json-rpc server for octave functions.
 ## prereqs
 
 * node.js
-* npm
 * GNU octave (I used 3.2)
 * [jsonlab](http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?jsonlab) (bundled)
 
@@ -24,7 +23,6 @@ A little json-rpc server for octave functions.
 
     git clone git@github.com:jesusabdullah/octave-rpc.git
     cd octave-rpc
-    npm install
     node bin/octave-rpc
 
 Runs on port 8080.
