@@ -31,13 +31,13 @@ Runs on port 8080.
 
 Functions are stored in ./functions as m-files.
 
-## Tests
+## tests
 
 No tests yet. If there were tests, it would consist of a series of example rpc
 calls, and then making sure that the results are as expected.
 
 You want tests? You write them. Or, wait until this becomes something I use.
 
-## License
+## license
 
 My code is licensed MIT/X11. jsonlab is licensed under its own terms (dual GPL/BSD).
