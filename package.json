@@ -1,0 +1,17 @@
+{
+  "author": "Joshua Holbrook <josh@nodejitsu.com> (http://jesusabdullah.github.com)",
+  "name": "octave-rpc",
+  "description": "A little json-rpc server that runs functions in octave",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jesusabdullah/octave-rpc",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jesusabdullah/octave-rpc.git"
+  },
+  "main": "./lib/octave-rpc.js",
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
