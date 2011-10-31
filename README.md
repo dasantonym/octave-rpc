@@ -9,7 +9,7 @@ A little json-rpc server for octave functions.
       ans = x+1;
     end
 
-    josh@onix:~/octave-rpc$ curl -X POST -d '{"id": "1", "method": "oneup", "params": [1]}' localhost:8080
+    josh@onix:~/octave-rpc$ curl -X POST -d '{"version": "1.1", "id": "1", "method": "oneup", "params": [1]}' localhost:8080
     {"result":[2],"version":"1.1","id":"1"}
 
 
