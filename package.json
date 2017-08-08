@@ -2,16 +2,35 @@
   "author": "Joshua Holbrook <josh@nodejitsu.com> (http://jesusabdullah.github.com)",
   "name": "octave-rpc",
   "description": "A little json-rpc server that runs functions in octave",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/jesusabdullah/octave-rpc",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git@github.com:jesusabdullah/octave-rpc.git"
   },
-  "main": "./lib/octave-rpc.js",
-  "engines": {
-    "node": "*"
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "start-dev": "cross-env NODE_ENV=dev node src/index.js",
+    "lint": "cross-env NODE_ENV=production eslint src/**.es6",
+    "build": "cross-env NODE_ENV=production babel -d ./ src/**.es6",
+    "watch": "cross-env babel --watch -d ./ src/**.es6"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "jsonlab": "git+https://github.com/dasantonym/jsonlab.git",
+    "restify": "^5.0.1",
+    "restify-cors-middleware": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "cross-env": "^5.0.4",
+    "eslint": "^4.4.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
 }
