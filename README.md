@@ -41,14 +41,12 @@ Functions are stored in `src/functions` as `.m`-files.
 
 ## Tests
 
-Still no tests after all these years. If there were tests, everybody and their granny would be like "Yeah, nice."
-A beautiful series of example RPC calls, always making sure that the results are as expected.
-
-You want tests? You write them. Or, wait until this becomes something I use. (Editor's note: Super unlikely.)
+Still no tests after all these years. When will this dream finally become your and my reality? :soon: 
+With a beautiful series of example RPC calls, we'll always be sure that responses are :ok_hand: at all times and :100: :muscle: like [Putin's Nukular](https://www.youtube.com/watch?v=IMejiyrWrMg).
 
 ## License
 
 My code is licensed MIT/X11. jsonlab is licensed under its own terms (dual GPL/BSD).
-A little bit additional credits [are belong to the mine](https://github.com/dasantonym) for extended cleaning and updating like a good boy.
+A little bit additional credits [are belong to the mine](https://github.com/dasantonym) for extended cleaning and updating like a ~~good boy~~. :neckbeard:
 
-<br /><p align="center">Nice.</p><p align="center"><img src="http://replygif.net/i/1437.gif" alt="Yeah, nice."></p>
+<br /><p align="center">:fu: Nice. :metal:</p><p align="center"><img src="http://replygif.net/i/1437.gif" alt="Yeah, nice."></p>
