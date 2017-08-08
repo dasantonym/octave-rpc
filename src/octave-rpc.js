@@ -30,8 +30,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const server = _restify2.default.createServer({ name: pkg.name, version: pkg.version, acceptable: ['application/json'] }),
-      cors = (0, _restifyCorsMiddleware2.default)({ origins: ['*'] }),
-      dataHandler = (buffer, data, writeStream = undefined) => {
+      cors = (0, _restifyCorsMiddleware2.default)({ origins: ['*'] });
+
+// Handles incoming data from Octave process
+const dataHandler = (buffer, data, writeStream = undefined) => {
   if (!data || data.length === 0) return buffer;
   buffer = Buffer.concat([buffer, data]);
   if (writeStream && typeof writeStream.write === 'function') writeStream.write(`${data}\n`);
@@ -52,15 +54,21 @@ server.post('/rpc/octave.json', function (req, res, next) {
   let buffer = Buffer.alloc(0),
       bufferErr = Buffer.alloc(0),
       errorLogger = process.env.NODE_ENV !== 'production' ? process.stderr : undefined;
-  worker.stdout.on('data', data => {
-    buffer = dataHandler(buffer, data, process.stdout);
-  });
-  worker.stderr.on('data', data => {
-    bufferErr = dataHandler(bufferErr, data, errorLogger);
-  });
-  worker.on('close', code => {
-    if (code !== 0) return next(new Error(`Error code ${code}: ${bufferErr.toString()}`, code));
-    res.send(JSON.parse(buffer.toString()));
+
+  new Promise(resolve => {
+    worker.stdout.on('data', data => {
+      buffer = dataHandler(buffer, data, process.stdout);
+    });
+    worker.stderr.on('data', data => {
+      bufferErr = dataHandler(bufferErr, data, errorLogger);
+    });
+    worker.on('close', code => {
+      if (code !== 0) throw new Error(`${bufferErr.toString()}`, code);
+      res.send(JSON.parse(buffer.toString()));
+      resolve();
+    });
+  }).catch(err => {
+    next(new Error(`Error code ${err.code}: ${err.message}`, err.code));
   });
 });
 

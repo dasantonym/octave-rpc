@@ -1,27 +1,20 @@
 function res = rpc (json)
-
-  # https://github.com/fangq/jsonlab#loadjsonm
   req = loadjson (json, "FastArrayParser", 1);
 
   try
     _ = req.version;
-  catch
+  catch ERR
     req.version = "1.1";
   end
 
   try
     _ = req.id;
-  catch
+  catch ERR
     req.id = "-1";
   end
 
+  ## disp (typeinfo (req.params));
   applied = apply_func (req.method, req.params);
-  packed = pack_args (applied);
-
-  res = savejson ("res", struct (
-    "result", packed,
-    "version", req.version,
-    "id", req.id
-  ), "Compact", 1);
-
+  res = savejson ("", struct ("result", applied, "version", req.version, "id", req.id),
+                  "Compact", 1, "SingletCell", 0, "SingletArray", 0);
 endfunction
