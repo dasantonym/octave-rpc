@@ -1,0 +1,4 @@
+fsep = filesep ();
+wkdir = pwd ();
+addpath( genpath (strjoin ({wkdir, "src"}, fsep)));
+addpath( genpath (strjoin ({wkdir, "node_modules", "jsonlab"}, fsep)));
